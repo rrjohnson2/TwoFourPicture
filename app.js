@@ -46,12 +46,12 @@ app.use(cors());
 app.use('/ftp', express.static('public'), serveIndex('public', {'icons': true}));
 
 
-app.get('/getsubmission', function(req,res) {
+app.get('/getSubmission', function(req,res) {
     var sub = req.param("sub");
     res.sendFile(path.join(`${__dirname}/public/content/${sub}`));
 })
 
-app.post('/uploadsubmission', function(req,res) {
+app.post('/uploadSubmission', function(req,res) {
     twofour_content(req,res,(err)=> {
         res.send(err)});
 })
