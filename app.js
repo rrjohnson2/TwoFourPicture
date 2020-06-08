@@ -23,7 +23,8 @@ var twofour_storage = multer.diskStorage({
         if(path.extname(file.originalname)==".mp3"||
           path.extname(file.originalname)==".png" ||
           path.extname(file.originalname)==".jpg" ||
-          path.extname(file.originalname)==".mp4"
+          path.extname(file.originalname)==".mp4" ||
+          true
           ){
             cb(null,file.originalname)}
         else
