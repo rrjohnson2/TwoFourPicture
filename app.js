@@ -35,18 +35,21 @@ var twofour_storage = multer.diskStorage({
 
 //will be using this for uplading
 const twofour_content = multer({ storage: twofour_storage }).single('sub');
-var corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
-  }
+
 
 
 app.use(logger('tiny'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cors(corsOptions));
+app.use(cors());
 app.use('/ftp', express.static('public'), serveIndex('public', {'icons': true}));
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 
 app.get('/getSubmission', function(req,res) {
