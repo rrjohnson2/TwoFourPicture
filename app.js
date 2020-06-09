@@ -40,7 +40,7 @@ const twofour_content = multer({ storage: twofour_storage }).single('sub');
 
 app.use(logger('tiny'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 app.use('/ftp', express.static('public'), serveIndex('public', {'icons': true}));
