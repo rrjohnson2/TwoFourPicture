@@ -48,7 +48,7 @@ app.use('/ftp', express.static('public'), serveIndex('public', {'icons': true}))
 
 
 app.get('/getSubmission', function(req,res) {
-    console.log(req.query)
+    console.log(req)
     var sub = req.query.sub;
     res.sendFile(path.join(`${__dirname}/public/content/${sub}`));
 }) 
