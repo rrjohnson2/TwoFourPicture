@@ -47,9 +47,9 @@ app.use(cors());
 app.use('/ftp', express.static('public'), serveIndex('public', {'icons': true}));
 
 
-app.get('/getSubmission', function(req,res) {
-    console.log(req.query)
-    var sub = req.query.sub;
+app.post('/getSubmission', function(req,res) {
+    console.log(req.body)
+    var sub = req.body.sub;
     res.sendFile(path.join(`${__dirname}/public/content/${sub}`));
 }) 
 app.post('/uploadSubmission', function(req,res) {
