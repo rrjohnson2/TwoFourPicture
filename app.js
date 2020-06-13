@@ -44,18 +44,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 
-
-app.all('/', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next();
-   });
-
 app.use('/ftp', express.static('public'), serveIndex('public', {'icons': true}));
 
 
 app.get('/getSubmission', function(req,res) {
-    var sub = req.param("sub");
+    console.log(req.query)
+    var sub = req.query.sub;
     res.sendFile(path.join(`${__dirname}/public/content/${sub}`));
 }) 
 app.post('/uploadSubmission', function(req,res) {
